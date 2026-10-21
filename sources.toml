@@ -1,0 +1,36 @@
+# Источники для мониторинга. Новый сайт = новый блок [[source]] с CSS-селекторами,
+# код менять не нужно. Демо-сайт books.toscrape.com создан специально для практики парсинга.
+
+[settings]
+db_path = "data/prices.db"
+delay = 1.0              # пауза между страницами, секунд — не нагружаем чужой сайт
+timeout = 20
+notify_threshold = 0     # уведомлять об изменении цены от N %
+
+[[source]]
+name = "Books: Mystery"
+url = "https://books.toscrape.com/catalogue/category/books/mystery_3/index.html"
+max_pages = 3
+
+[source.selectors]
+item = "article.product_pod"
+title = "h3 a"
+title_attr = "title"     # в тексте ссылки название обрезано, полное — в атрибуте title
+link = "h3 a"
+price = ".price_color"
+availability = ".availability"
+next_page = "li.next a"
+
+[[source]]
+name = "Books: Travel"
+url = "https://books.toscrape.com/catalogue/category/books/travel_2/index.html"
+max_pages = 3
+
+[source.selectors]
+item = "article.product_pod"
+title = "h3 a"
+title_attr = "title"
+link = "h3 a"
+price = ".price_color"
+availability = ".availability"
+next_page = "li.next a"
