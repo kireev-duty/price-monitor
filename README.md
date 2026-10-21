@@ -98,7 +98,7 @@ docker run --rm --env-file .env -v "$PWD/data:/app/data" -v "$PWD/reports:/app/r
 
 ```bash
 pip install pytest
-pytest -q
+python -m pytest -q
 ```
 
 Тесты не ходят в интернет: страницы подставляются через `httpx.MockTransport`.
